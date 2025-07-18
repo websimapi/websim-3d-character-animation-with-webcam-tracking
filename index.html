@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Character Animation with Webcam Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="ui-panel">
+            <h2>3D Character Animator</h2>
+            <div class="controls">
+                <button id="startTrackingBtn">Start Tracking</button>
+                <button id="stopTrackingBtn" disabled>Stop Tracking</button>
+                <button id="resetPoseBtn">Reset Pose</button>
+            </div>
+            <div class="settings">
+                <label>
+                    <input type="checkbox" id="showSkeleton" checked>
+                    Show Skeleton
+                </label>
+                <label>
+                    <input type="checkbox" id="showWebcam" checked>
+                    Show Webcam
+                </label>
+            </div>
+            <div class="info">
+                <p>Status: <span id="status">Ready</span></p>
+                <p>Webcam: <span id="webcamStatus">Not connected</span></p>
+            </div>
+        </div>
+        
+        <div id="canvas-container">
+            <canvas id="three-canvas"></canvas>
+            <video id="webcam" autoplay muted playsinline></video>
+            <canvas id="pose-canvas"></canvas>
+        </div>
+        
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Loading 3D model and tracking...</p>
+        </div>
+    </div>
+
+    <!-- Import maps for Three.js -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <!-- MediaPipe -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5.1675469404/pose.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1620248257/drawing_utils.js"></script>
+
+    <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
